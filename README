@@ -1,13 +1,9 @@
 Capone
 ======
 
-Introduction goes here.
-
-
-Example
-=======
-
-Example goes here.
-
+Capone is the set of rake tasks and capistrano recipes that help:
+* generate configs;
+* prepare servers for production use;
+* maintain servers.
 
 Copyright (c) 2008 Denis Barushev, released under the MIT license
