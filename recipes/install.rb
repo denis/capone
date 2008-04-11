@@ -1,16 +1,38 @@
 namespace :capone do
   namespace :install do
     desc <<-DESC
-      Install MySQL
+      Install all.
     DESC
-    task :mysql do
+    task :default do
+        ruby
+        rubygems
+    end
+
+    desc <<-DESC
+      Install MySQL.
+    DESC
+    task :mysql, :roles => :db do
       sudo "aptitude install mysql"
     end
 
     desc <<-DESC
-      Install rubygems
+      Install Ruby.
     DESC
-    task :rubygems do
+    task :ruby, :roles => :app do
+      sudo "aptitude install ruby"
+    end
+
+    desc <<-DESC
+      Install software.
+    DESC
+    task :software do
+      sudo "aptitude install subversion"
+    end
+
+    desc <<-DESC
+      Install rubygems.
+    DESC
+    task :rubygems, :roles => :app do
       run "cd /tmp"
       run "wget http://rubyforge.rubyuser.de/rubygems/rubygems-1.1.0.tgz"
       run "tar zxvf rubygems-1.1.0.tgz"
@@ -23,9 +45,9 @@ namespace :capone do
     end
 
     desc <<-DESC
-      Install gems
+      Install gems.
     DESC
-    task :gems do
+    task :gems, :roles => :app do
       sudo "rake gems:install"
     end
   end

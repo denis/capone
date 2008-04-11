@@ -1,9 +1,17 @@
 namespace :capone do
   namespace :update do
     desc <<-DESC
+      Update all.
+    DESC
+    task :default do
+      software
+      gems
+    end
+
+    desc <<-DESC
       Update system software.
     DESC
-    task :system do
+    task :software do
       sudo "aptitude update"
       sudo "aptitude upgrade"
     end
