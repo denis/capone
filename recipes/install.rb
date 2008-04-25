@@ -1,54 +1,82 @@
 namespace :capone do
   namespace :install do
     desc <<-DESC
-      Install all.
+      Install all software for all servers.
     DESC
     task :default do
-        ruby
-        rubygems
+        update:software
+        app
+        web
+        db
     end
 
     desc <<-DESC
-      Install MySQL.
+      Install all software for app-server.
     DESC
-    task :mysql, :roles => :db do
-      sudo "aptitude install mysql"
+    task :app, :roles => :app do
+      subversion
+      ruby
+      rubygems
+      gems
+    end
+
+    desc <<-DESC
+      Install all software for web-server.
+    DESC
+    task :web, :roles => :web do
+      nginx
+    end
+
+    desc <<-DESC
+      Install all software for db server.
+    DESC
+    task :db, :roles => :db do
+      mysql
+    end
+
+    desc <<-DESC
+      Install Subversion.
+    DESC
+    task :subversion, :roles => :app do
+      sudo "aptitude install subversion"
     end
 
     desc <<-DESC
       Install Ruby.
     DESC
     task :ruby, :roles => :app do
-      sudo "aptitude install ruby"
+      sudo "aptitude install ruby ruby1.8-dev irb1.8 rdoc1.8 libgems-ruby1.8 libopenssl-ruby1.8 libreadline-ruby1.8 libmysqlclient15-dev"
     end
 
     desc <<-DESC
-      Install software.
-    DESC
-    task :software do
-      sudo "aptitude install subversion"
-    end
-
-    desc <<-DESC
-      Install rubygems.
+      Install RubyGems.
     DESC
     task :rubygems, :roles => :app do
-      run "cd /tmp"
-      run "wget http://rubyforge.rubyuser.de/rubygems/rubygems-1.1.0.tgz"
-      run "tar zxvf rubygems-1.1.0.tgz"
-      run "cd rubygems-1.1.0"
-
-      sudo "ruby setup.rb"
-      sudo "gem update --system"
-
-      run "rm -Rf /tmp/rubygems-1.1.0"
+      sudo "aptitude install rubygems"
+      sudo "gem update --system --no-rdoc --no-ri"
+      sudo "ln -s /usr/bin/gem1.8 /usr/bin/gem"
     end
 
     desc <<-DESC
-      Install gems.
+      Install common gems.
     DESC
     task :gems, :roles => :app do
-      sudo "rake gems:install"
+      sudo "aptitude install build-essential"
+      sudo "gem install mysql rake mongrel mongrel_cluster --no-rdoc --no-ri"
+    end
+
+    desc <<-DESC
+      Install nginx.
+    DESC
+    task :nginx, :roles => :web do
+      sudo "aptitude install nginx"
+    end
+
+    desc <<-DESC
+      Install MySQL.
+    DESC
+    task :mysql, :roles => :db do
+      sudo "aptitude install mysql-server"
     end
   end
 end
