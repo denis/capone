@@ -1,9 +1,13 @@
 Capone
 ======
 
-Capone is the set of rake tasks and capistrano recipes that help:
+Capone is the set of rake tasks and capistrano recipes that help to:
 * generate configs;
 * prepare servers for production use;
+* deploy your application;
 * maintain servers.
+
+Capone supports only Ubuntu 8.04 LTS as an OS, Mongrel as an application server,
+nginx as a web server, MySQL as a database server and Subversion as a SCM.
 
 Copyright (c) 2008 Denis Barushev, released under the MIT license
