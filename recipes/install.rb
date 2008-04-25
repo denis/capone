@@ -18,6 +18,7 @@ namespace :capone do
       ruby
       rubygems
       gems
+      mongrel
     end
 
     desc <<-DESC
@@ -62,7 +63,19 @@ namespace :capone do
     DESC
     task :gems, :roles => :app do
       sudo "aptitude install build-essential"
-      sudo "gem install mysql rake mongrel mongrel_cluster --no-rdoc --no-ri"
+      sudo "gem install rake mysql --no-rdoc --no-ri"
+    end
+
+    desc <<-DESC
+      Install Mongrel.
+    DESC
+    task :mongrel, :roles => :app do
+      sudo "gem install mongrel mongrel_cluster --no-rdoc --no-ri"
+
+      sudo "ln -s /usr/lib/ruby/gems/1.8/gems/mongrel_cluster-1.0.5/resources/mongrel_cluster /etc/init.d/mongrel_cluster"
+      sudo "chmod +x /etc/init.d/mongrel_cluster"
+      sudo "/usr/sbin/update-rc.d mongrel_cluster defaults"
+      sudo "mkdir /etc/mongrel_cluster"
     end
 
     desc <<-DESC
