@@ -1,7 +1,7 @@
 namespace :capone do
   namespace :backup do
     desc <<-DESC
-      Update all.
+      Backup all.
     DESC
     task :default do
       mysql
