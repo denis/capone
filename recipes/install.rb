@@ -46,23 +46,23 @@ namespace :capone do
       Install Ruby.
     DESC
     task :ruby, :roles => :app do
-      sudo "aptitude install ruby ruby1.8-dev irb1.8 rdoc1.8 libgems-ruby1.8 libopenssl-ruby1.8 libreadline-ruby1.8 libmysqlclient15-dev"
+      sudo "aptitude install ruby ruby1.8-dev irb irb1.8 rdoc rdoc1.8 libopenssl-ruby1.8 libreadline-ruby1.8"
     end
 
     desc <<-DESC
       Install RubyGems.
     DESC
     task :rubygems, :roles => :app do
-      sudo "aptitude install rubygems"
+      sudo "aptitude install libgems-ruby1.8 rubygems"
       sudo "gem update --system --no-rdoc --no-ri"
-      sudo "ln -s /usr/bin/gem1.8 /usr/bin/gem"
+      sudo "ln -fs /usr/bin/gem1.8 /usr/bin/gem"
     end
 
     desc <<-DESC
       Install common gems.
     DESC
     task :gems, :roles => :app do
-      sudo "aptitude install build-essential"
+      sudo "aptitude install build-essential libmysqlclient15-dev"
       sudo "gem install rake mysql --no-rdoc --no-ri"
     end
 
