@@ -13,14 +13,14 @@ namespace :capone do
     DESC
     task :software do
       sudo "aptitude update"
-      sudo "aptitude upgrade"
+      sudo "aptitude safe-upgrade"
     end
 
     desc <<-DESC
       Update installed gems.
     DESC
     task :gems do
-      sudo "gem update"
+      sudo "gem update --no-rdoc --no-ri"
     end
   end
 end
