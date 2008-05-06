@@ -76,6 +76,9 @@ namespace :capone do
       sudo "chmod +x /etc/init.d/mongrel_cluster"
       sudo "/usr/sbin/update-rc.d mongrel_cluster defaults"
       sudo "mkdir /etc/mongrel_cluster"
+
+      sudo "mkdir -m 750 /var/www/apps"
+      sudo "chown deploy:deploy /var/www/apps"
     end
 
     desc <<-DESC
