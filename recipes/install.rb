@@ -72,12 +72,12 @@ namespace :capone do
     task :mongrel, :roles => :app do
       sudo "gem install mongrel mongrel_cluster --no-rdoc --no-ri"
 
-      sudo "ln -s /usr/lib/ruby/gems/1.8/gems/mongrel_cluster-1.0.5/resources/mongrel_cluster /etc/init.d/mongrel_cluster"
+      sudo "ln -sf /usr/lib/ruby/gems/1.8/gems/mongrel_cluster-1.0.5/resources/mongrel_cluster /etc/init.d/mongrel_cluster"
       sudo "chmod +x /etc/init.d/mongrel_cluster"
       sudo "/usr/sbin/update-rc.d mongrel_cluster defaults"
       sudo "mkdir /etc/mongrel_cluster"
 
-      sudo "mkdir -m 750 /var/www/apps"
+      sudo "mkdir -p -m 750 /var/www/apps"
       sudo "chown deploy:deploy /var/www/apps"
     end
 
