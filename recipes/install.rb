@@ -39,7 +39,7 @@ namespace :capone do
       Install Subversion.
     DESC
     task :subversion, :roles => :app do
-      sudo "aptitude install subversion"
+      sudo "aptitude install -y subversion"
     end
 
     desc <<-DESC
@@ -62,7 +62,7 @@ namespace :capone do
       Install common gems.
     DESC
     task :gems, :roles => :app do
-      sudo "aptitude install build-essential libmysqlclient15-dev"
+      sudo "aptitude install -y build-essential libmysqlclient15-dev"
       sudo "gem install rake mysql --no-rdoc --no-ri"
     end
 
@@ -92,7 +92,7 @@ namespace :capone do
       Install MySQL.
     DESC
     task :mysql, :roles => :db do
-      sudo "aptitude install mysql-server"
+      sudo "aptitude install -y mysql-server"
     end
   end
 end
