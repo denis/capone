@@ -13,7 +13,7 @@ namespace :capone do
     DESC
     task :software do
       sudo "aptitude update"
-      sudo "aptitude safe-upgrade"
+      sudo "aptitude safe-upgrade -y"
     end
 
     desc <<-DESC
