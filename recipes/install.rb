@@ -4,7 +4,7 @@ namespace :capone do
       Install all software for all servers.
     DESC
     task :default do
-        update:software
+        update::software
         app
         web
         db
