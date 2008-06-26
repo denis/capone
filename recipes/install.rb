@@ -43,6 +43,13 @@ namespace :capone do
     end
 
     desc <<-DESC
+      Install git.
+    DESC
+    task :git, :roles => :app do
+      sudo "aptitude install -y git-core"
+    end
+
+    desc <<-DESC
       Install Ruby.
     DESC
     task :ruby, :roles => :app do
