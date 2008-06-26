@@ -11,7 +11,7 @@ namespace :capone do
     end
 
     desc <<-DESC
-      Install all software for app-server.
+      Install all software for app server.
     DESC
     task :app, :roles => :app do
       subversion
@@ -22,7 +22,7 @@ namespace :capone do
     end
 
     desc <<-DESC
-      Install all software for web-server.
+      Install all software for web server.
     DESC
     task :web, :roles => :web do
       nginx
