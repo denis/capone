@@ -53,14 +53,14 @@ namespace :capone do
       Install Ruby.
     DESC
     task :ruby, :roles => :app do
-      sudo "aptitude install ruby ruby1.8-dev irb irb1.8 rdoc rdoc1.8 libopenssl-ruby1.8 libreadline-ruby1.8"
+      sudo "aptitude install -y ruby ruby1.8-dev irb irb1.8 rdoc rdoc1.8 libopenssl-ruby1.8 libreadline-ruby1.8"
     end
 
     desc <<-DESC
       Install RubyGems.
     DESC
     task :rubygems, :roles => :app do
-      sudo "aptitude install libgems-ruby1.8 rubygems"
+      sudo "aptitude install -y libgems-ruby1.8 rubygems"
       sudo "gem update --system --no-rdoc --no-ri"
       sudo "ln -fs /usr/bin/gem1.8 /usr/bin/gem"
     end
@@ -92,7 +92,7 @@ namespace :capone do
       Install nginx.
     DESC
     task :nginx, :roles => :web do
-      sudo "aptitude install nginx"
+      sudo "aptitude install -y nginx"
     end
 
     desc <<-DESC
