@@ -14,7 +14,7 @@ namespace :capone do
       Install all software for app server.
     DESC
     task :app, :roles => :app do
-      subversion
+      git
       ruby
       rubygems
       gems
