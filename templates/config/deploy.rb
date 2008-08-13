@@ -11,6 +11,6 @@ set :deploy_to, "/var/www/apps/#{application}"
 
 set :mongrel_conf, "#{deploy_to}/current/config/mongrel_cluster.yml"
 
-role :app, "your app-server here"
+role :app, "your app-server here", :cron => true
 role :web, "your web-server here"
 role :db,  "your db-server here", :primary => true
