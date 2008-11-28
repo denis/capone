@@ -47,6 +47,3 @@ namespace :capone do
     end
   end
 end
-
-before "deploy:stop",  "capone:cron:stop"
-after  "deploy:start", "capone:cron:start"

@@ -15,6 +15,3 @@ namespace :capone do
     end
   end
 end
-
-after "deploy:setup", "capone:deploy:setup_db"
-after "deploy:update_code", "capone:deploy:install_gems"
