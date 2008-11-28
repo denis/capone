@@ -1,10 +1,13 @@
 namespace :capone do
   namespace :deploy do
     desc <<-DESC
-      Create MySQL user and database.
+      Create MySQL user and database using data from config/database.yml.
     DESC
     task :setup_db, :roles => :db, :only => { :primary => true } do
-      run "echo 'Not implemented yet.'"
+      config = YAML::load(File.open("config/database.yml"))["production"]
+      root_password = Capistrano::CLI.password_prompt(prompt="Enter a root password for MySQL: ")
+
+      run "mysql -u root --password=#{root_password} -e \"CREATE DATABASE IF NOT EXISTS #{config["database"]} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; GRANT ALL PRIVILEGES ON #{config["database"]}.* TO '#{config["username"]}'@'localhost' IDENTIFIED BY '#{config["password"]}' WITH GRANT OPTION;\""
     end
 
     desc <<-DESC
