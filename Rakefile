@@ -10,7 +10,7 @@ begin
     gem.homepage = "http://github.com/denis/capone"
     gem.authors = ["Denis Barushev"]
 
-    gem.files = %w(LICENSE README.rdoc Rakefil) + Dir.glob("{lib,recipes,tasks,templates}/**/*")
+    gem.files = %w(LICENSE README.rdoc Rakefile) + Dir.glob("{lib,recipes,tasks,templates}/**/*")
 
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
