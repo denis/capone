@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.files = [
     "LICENSE",
     "README.rdoc",
+    "Rakefile",
     "lib/capone.rb",
     "recipes/backup.rb",
     "recipes/cron.rb",
