@@ -1,3 +1,0 @@
-00 * * * * RAILS_ENV=production rake -f <%= current_path %>/Rakefile chores:hourly >> <%= deploy_to %>/shared/log/cron.log
-01 0 * * * RAILS_ENV=production rake -f <%= current_path %>/Rakefile chores:daily  >> <%= deploy_to %>/shared/log/cron.log
-02 0 * * 1 RAILS_ENV=production rake -f <%= current_path %>/Rakefile chores:weekly >> <%= deploy_to %>/shared/log/cron.log
