@@ -9,13 +9,11 @@ begin
     gem.email = "barushev@gmail.com"
     gem.homepage = "http://github.com/denis/capone"
     gem.authors = ["Denis Barushev"]
-
-    gem.files = %w(LICENSE README.rdoc Rakefile) + Dir.glob("{lib,recipes,tasks,templates}/**/*")
-
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.files = %w(LICENSE README.rdoc Rakefile) + Dir.glob("{lib,recipes,tasks,templates}/**/*")
   end
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
 
 require 'rake/testtask'
@@ -38,14 +36,14 @@ rescue LoadError
   end
 end
 
+task :test => :check_dependencies
 
 task :default => :test
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
-  if File.exist?('VERSION.yml')
-    config = YAML.load(File.read('VERSION.yml'))
-    version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
+  if File.exist?('VERSION')
+    version = File.read('VERSION')
   else
     version = ""
   end
