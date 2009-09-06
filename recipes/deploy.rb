@@ -14,7 +14,7 @@ namespace :capone do
       Install gems needed by application.
     DESC
     task :install_gems, :roles => :app do
-      run "rake gems:install -f #{release_path}/Rakefile"
+      run "rake gems:install -f #{release_path}/Rakefile RAILS_ENV=#{rails_env}"
     end
 
     desc <<-DESC
