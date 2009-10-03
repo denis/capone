@@ -11,6 +11,7 @@ begin
     gem.authors = ["Denis Barushev"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.files = %w(LICENSE README.rdoc Rakefile) + Dir.glob("{lib,recipes,tasks,templates}/**/*")
+    gem.add_dependency "capistrano", ">= 2.5.0"
   end
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
