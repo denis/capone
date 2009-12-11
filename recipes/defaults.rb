@@ -14,6 +14,9 @@ set :use_sudo, false
 # Needed for proper password prompts
 default_run_options[:pty] = true
 
+# SSH options
+ssh_options[:forward_agent] = true
+
 # You can redefine these variables in your config/deploy.rb
 
 # set :daemon_strategy, :mongrel_cluster
