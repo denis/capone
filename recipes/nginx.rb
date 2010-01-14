@@ -25,8 +25,10 @@ namespace :capone do
   end
 end
 
-if fetch(:web_server, :nginx) == :nginx
-  before "deploy:start",   "capone:nginx:enable_vhost"
-  after  "deploy:stop",    "capone:nginx:disable_vhost"
-  after  "deploy:restart", "capone:nginx:reload_if_config_file_changed"
+on :load do
+  if fetch(:web_server, :nginx) == :nginx
+    before "deploy:start",   "capone:nginx:enable_vhost"
+    after  "deploy:stop",    "capone:nginx:disable_vhost"
+    after  "deploy:restart", "capone:nginx:reload_if_config_file_changed"
+  end
 end
