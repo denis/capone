@@ -33,9 +33,10 @@ variables:
     require "capone"
 
     set :application, "set your application name here"
-
     set :repository,  "set your repository location here"
-    set :host, "set your host here"
+    set :host,        "set your host here"
+
+    # See capone/recipes/defaults.rb for defaults
 
 ## Features
 
