@@ -5,16 +5,15 @@
 
 Gem::Specification.new do |s|
   s.name = %q{capone}
-  s.version = "0.0.10"
+  s.version = "0.0.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Denis Barushev"]
-  s.date = %q{2010-01-14}
+  s.date = %q{2010-02-19}
   s.email = %q{barushev@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.md",
-     "TODO"
+     "README.md"
   ]
   s.files = [
     "LICENSE",
@@ -28,7 +27,6 @@ Gem::Specification.new do |s|
      "recipes/delayed_job.rb",
      "recipes/gems.rb",
      "recipes/nginx.rb",
-     "recipes/replicate.rb",
      "recipes/whenever.rb"
   ]
   s.homepage = %q{http://github.com/denis/capone}
