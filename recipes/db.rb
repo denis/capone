@@ -52,7 +52,7 @@ namespace :capone do
       run_locally "rake db:drop"
       run_locally "rake db:create"
 
-      config = YAML::load(File.open("config/database.yml"))[rails_env]
+      config = YAML::load(File.open("config/database.yml"))["development"]
       case config["adapter"]
         when "mysql"
           cmd = ["bzcat db/#{rails_env}-data.sql.bz2 | mysql"]
