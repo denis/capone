@@ -30,7 +30,7 @@ namespace :capone do
           cmd << "--user='#{config['username'].nil? ? 'root' : config['username']}'"
           cmd << "--password='#{config['password']}'" unless config["password"].nil?
           cmd << config["database"]
-          cmd << "| bzip2 > #{release_path}/db/#{rails_env}-data.sql.bz2"
+          cmd << "| bzip2 > #{current_path}/db/#{rails_env}-data.sql.bz2"
           run cmd.join(" ")
       else
         puts "Task not supported by '#{config['adapter']}'."
@@ -38,17 +38,15 @@ namespace :capone do
     end
 
     desc <<-DESC
-      Dumps the database for the current environment and take a local copy.
+      Dump the database for the current environment and take a local copy.
     DESC
     task :download_backup, :roles => :db, :only => { :primary => true } do
       backup
-      get "#{latest_release}/db/#{rails_env}-data.sql.bz2", "db/#{rails_env}-data.sql.bz2"
+      get "#{current_path}/db/#{rails_env}-data.sql.bz2", "db/#{rails_env}-data.sql.bz2"
     end
 
     desc <<-DESC
-      Loads an existing database dump into the current environment's database.
-      WARNING: this completely nukes the existing database! Use SOURCE_ENV to
-      specify which dump should be loaded. Defaults to 'production'."
+      Load an existing database dump into the development environment's database.
     DESC
     task :load_backup do
       run_locally "rake db:drop"
@@ -57,7 +55,7 @@ namespace :capone do
       config = YAML::load(File.open("config/database.yml"))[rails_env]
       case config["adapter"]
         when "mysql"
-          cmd = ["bzcat db/production-data.sql.bz2 | mysql"]
+          cmd = ["bzcat db/#{rails_env}-data.sql.bz2 | mysql"]
           cmd << "--host='#{config['host']}'" unless config["host"].nil?
           cmd << "--user='#{config['username'].nil? ? 'root' : config['username']}'"
           cmd << "--password='#{config['password']}'" unless config["password"].nil?
