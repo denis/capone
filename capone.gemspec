@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{capone}
-  s.version = "0.0.13"
+  s.version = "0.0.14"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Denis Barushev"]
-  s.date = %q{2010-04-23}
+  s.date = %q{2010-05-31}
   s.email = %q{barushev@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
