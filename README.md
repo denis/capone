@@ -1,5 +1,7 @@
 # Capone
 
+![Capone](http://eu.movieposter.com/posters/archive/main/114/MPW-57083)
+
 Capone is the set of Capistrano recipes that help me to deploy my
 applications.
 
